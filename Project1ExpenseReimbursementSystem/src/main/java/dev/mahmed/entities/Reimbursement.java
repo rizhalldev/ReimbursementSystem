@@ -1,5 +1,7 @@
 package dev.mahmed.entities;
 
+import java.sql.Date;
+
 public class Reimbursement {
 
 	private int reimbursementId;
@@ -7,7 +9,9 @@ public class Reimbursement {
 	private int amountPaid;
 	private String status;
 	private String category;
+	public String details;
 	private int employeeId;
+	private Date date;
 	
 	public Reimbursement() { }
 
@@ -59,11 +63,26 @@ public class Reimbursement {
 		this.employeeId = employeeId;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getDetails() {
+		return details;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
 	@Override
 	public String toString() {
 		return "Reimbursement [reimbursementId=" + reimbursementId + ", amountRequested=" + amountRequested
-				+ ", amountPaid=" + amountPaid + ", status=" + status + ", category=" + category + ", employeeId="
-				+ employeeId + "]";
+				+ ", amountPaid=" + amountPaid + ", status=" + status + ", category=" + category + ", details="
+				+ details + ", employeeId=" + employeeId + ", date=" + date + "]";
 	}
-	
 }
