@@ -45,6 +45,7 @@ public class ReimbursementDAOmaria implements ReimbursementDAO{
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			Reimbursement reimbursement = new Reimbursement();
+			reimbursement.setReimbursementId(rs.getInt("REIMBURSEMENT_ID"));
 			reimbursement.setAmountRequested(rs.getInt("AMOUNT_REQUESTED"));
 			reimbursement.setStatus(rs.getString("STATUS"));
 			reimbursement.setCategory(rs.getString("CATEGORY"));

@@ -206,7 +206,7 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 	@Override
 	public Employee updateEmployee(Employee employee) {
 		try (Connection conn = ConnectionUtil.createConnection()){
-			String sql = "UPDATE project1reimbursements.EMPLOYEE BALANCE = ? WHERE EMPLOYEE_ID = ?";
+			String sql = "UPDATE project1reimbursements.EMPLOYEE SET BALANCE = ? WHERE EMPLOYEE_ID = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, employee.getBalance());
 			ps.setInt(2, employee.getEmployeeId());
