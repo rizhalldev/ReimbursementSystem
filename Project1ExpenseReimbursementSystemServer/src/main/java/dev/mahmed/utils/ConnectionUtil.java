@@ -16,13 +16,21 @@ private static Connection conn = null;
 		Properties props = new Properties();
 				
 		try {
-		FileInputStream in = new FileInputStream("src/main/resources/connection.properties");
+			// Sometimes the JRE doesn't load the driver correctly
+			// This will force the driver to lead, if it doesn't work
+			Class.forName("org.mariadb.jdbc.Driver");
+		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+		FileInputStream in = new FileInputStream(ConnectionUtil.class.getClassLoader().getResource("connection.properties").getFile());
 		props.load(in);
 					
 		String details = props.getProperty("condetails");
 					
 		Connection conn = DriverManager.getConnection(details);
-//		System.out.println(conn);
+		System.out.println(conn);
 
 		return conn;
 		
@@ -38,7 +46,7 @@ private static Connection conn = null;
 		}
 	}
 	
-//	public static void main(String[] args) {
-//	createConnection();
-//}
+	public static void main(String[] args) {
+	createConnection();
+}
 }
