@@ -33,7 +33,11 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			employee.setEmployeeId(key);
 			return employee;
 		} catch (SQLException e) {
-			return null;
+			Employee none = new Employee();
+			none.setUserName("");
+			none.setPassword("");
+			none.setEmployeeId(0);
+			return none;
 		}
 	}
 
@@ -55,7 +59,11 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			employee.setManagerId(rs.getInt("MANAGER_ID"));
 			return employee;
 		} catch (SQLException e) {
-			return null;
+			Employee none = new Employee();
+			none.setEmployeeId(0);
+			none.setUserName("");
+			none.setPassword("");
+			return none;
 		}
 	}
 
@@ -77,7 +85,11 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			employee.setManagerId(rs.getInt("MANAGER_ID"));
 			return employee;
 		} catch (SQLException e) {
-			return null;
+			Employee none = new Employee();
+			none.setEmployeeId(0);
+			none.setUserName("");
+			none.setPassword("");
+			return none;
 		}
 	}
 
@@ -100,18 +112,23 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			employee.setManagerId(rs.getInt("MANAGER_ID"));
 			return employee;
 		} catch (SQLException e) {
-			return null;
+			Employee none = new Employee();
+			none.setEmployeeId(0);
+			none.setUserName("");
+			none.setPassword("");
+			return none;
 		}
 	}
 
 	@Override
 	public List<Employee> getEmployeesByFirstName(String firstName) {
+		List<Employee> employees = new ArrayList<Employee>();
 		try (Connection conn = ConnectionUtil.createConnection()) {
 			String sql = "SELECT * FROM project1reimbursements.EMPLOYEE WHERE FIRST_NAME = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, firstName);
 			ResultSet rs = ps.executeQuery();
-			List<Employee> employees = new ArrayList<Employee>();
+			
 			while (rs.next()) {
 				Employee employee = new Employee();
 				employee.setEmployeeId(rs.getInt("EMPLOYEE_ID"));
@@ -125,14 +142,14 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			}
 			return employees;
 		} catch (SQLException e) {
-			return null;
+			return employees;
 		}
 	}
 
 	@Override
 	public List<Employee> getEmployeesByDivision(String division) {
+		List<Employee> employees = new ArrayList<Employee>();
 		try (Connection conn = ConnectionUtil.createConnection()) {
-			List<Employee> employees = new ArrayList<Employee>();
 			String sql = "SELECT * FROM project1reimbursements.EMPLOYEE INNER JOIN project1reimbursements.MANAGER ON EMPLOYEE.MANAGER_ID = MANAGER.MANAGER_ID AND MANAGER.DIVISION = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, division);
@@ -150,18 +167,18 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			}
 			return employees;
 		} catch (SQLException e) {
-			return null;
+			return employees;
 		}
 	}
 
 	@Override
 	public List<Employee> getEmployeesByManager(Manager manager) {
+		List<Employee> employees = new ArrayList<Employee>();
 		try (Connection conn = ConnectionUtil.createConnection()) {
 			String sql = "SELECT * FROM project1reimbursements.EMPLOYEE WHERE MANAGER_ID = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, manager.getManagerId());
 			ResultSet rs = ps.executeQuery();
-			List<Employee> employees = new ArrayList<Employee>();
 			while (rs.next()) {
 				Employee employee = new Employee();
 				employee.setEmployeeId(rs.getInt("EMPLOYEE_ID"));
@@ -175,17 +192,17 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			}
 			return employees;
 		} catch (SQLException e) {
-			return null;
+			return employees;
 		}
 	}
 
 	@Override
 	public List<Employee> getAllEmployees() {
+		List<Employee> employees = new ArrayList<Employee>();
 		try (Connection conn = ConnectionUtil.createConnection()) {
 			String sql = "SELECT * FROM project1reimbursements.EMPLOYEE";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			List<Employee> employees = new ArrayList<Employee>();
 			while (rs.next()) {
 				Employee employee = new Employee();
 				employee.setEmployeeId(rs.getInt("EMPLOYEE_ID"));
@@ -199,7 +216,7 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			}
 			return employees;
 		} catch (SQLException e) {
-			return null;
+			return employees;
 		}
 	}
 
@@ -213,7 +230,9 @@ public class EmployeeDAOmaria implements EmployeeDAO{
 			ps.execute();
 			return employee;
 		} catch (SQLException e) {
-			return null;
+			Employee none = new Employee();
+			none.setEmployeeId(0);
+			return none;
 		}
 	}
 
