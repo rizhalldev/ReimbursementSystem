@@ -1,14 +1,21 @@
 package dev.mahmed.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import dev.mahmed.daos.EmployeeDAO;
 import dev.mahmed.daos.EmployeeDAOmaria;
+import dev.mahmed.daos.ReimbursementDAO;
+import dev.mahmed.daos.ReimbursementDAOmaria;
 import dev.mahmed.entities.Employee;
+import dev.mahmed.entities.Reimbursement;
 
 
 
 public class EmployeeServiceImpl implements EmployeeService{
 	
 EmployeeDAO edao = new EmployeeDAOmaria();
+ReimbursementDAO rdao = new ReimbursementDAOmaria();
 
 	@Override
 	public Employee employeeLogin(Employee employee) {
@@ -27,6 +34,13 @@ EmployeeDAO edao = new EmployeeDAOmaria();
 			bad.setUserName("");
 			return bad;
 		}
+	}
+
+	@Override
+	public List<Reimbursement> getEmployeeReimbursements(Employee employee) {
+		List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
+		reimbursements = rdao.getReimbursementsByEmployee(employee);
+		return reimbursements;
 	}
 
 }

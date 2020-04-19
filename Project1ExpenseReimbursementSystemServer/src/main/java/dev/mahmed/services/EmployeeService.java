@@ -10,7 +10,7 @@ public interface EmployeeService {
 	Employee employeeLogin(Employee employee);
 	
 	// Show amountRequested & status
-//	List<Reimbursement> viewOwnReimbursements(Employee employee);
+	List<Reimbursement> getEmployeeReimbursements(Employee employee);
 //	List<Reimbursement> viewOwnPendingReimbursements();
 //	List<Reimbursement> viewOwnNonpendingReimbursements();
 //	
