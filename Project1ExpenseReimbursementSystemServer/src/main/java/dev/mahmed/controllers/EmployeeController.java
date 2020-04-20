@@ -2,6 +2,7 @@ package dev.mahmed.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import dev.mahmed.entities.Employee;
+import dev.mahmed.entities.Reimbursement;
 import dev.mahmed.services.EmployeeService;
 import dev.mahmed.services.EmployeeServiceImpl;
 
@@ -37,6 +39,18 @@ public class EmployeeController {
 		
 		String employee = (String) request.getSession().getAttribute("employee");
 		response.getWriter().append(employee);
+	}
+	
+	public void getEmployeeReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		Gson gson = new Gson();
+		String employeeJson = (String) session.getAttribute("employee");
+		Employee employee = gson.fromJson(employeeJson, Employee.class);
+		PrintWriter pw = response.getWriter();
+		List<Reimbursement> reimbursements = eserv.getEmployeeReimbursements(employee);
+		String json = gson.toJson(reimbursements);
+		session.setAttribute("reimbursements", json);
+		pw.append(json);
 	}
 
 }
