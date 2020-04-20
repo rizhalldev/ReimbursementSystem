@@ -24,6 +24,7 @@ public class DispatcherServlet extends HttpServlet {
 		
 		case "/Project1ExpenseReimbursementSystemServer/api/employeelogin": econtrol.employeeLogin(request, response); break;
 		case "/Project1ExpenseReimbursementSystemServer/api/getloggedemployee": econtrol.getLoggedEmployee(request, response); break;
+		case "/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements": econtrol.getEmployeeReimbursements(request, response); break;
 		
 		default: break;
 		}
