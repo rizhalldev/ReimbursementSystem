@@ -32,7 +32,6 @@ public class EmployeeController {
 		employee = eserv.employeeLogin(employee);
 		String employeeJson = gson.toJson(employee);
 		session.setAttribute("employee", employeeJson);
-//		response.sendRedirect("http://localhost:8080/Project1ExpenseReimbursementSystemServer/employeehome.html");
 	}
 	
 	public void getLoggedEmployee(HttpServletRequest request, HttpServletResponse response) throws IOException {
