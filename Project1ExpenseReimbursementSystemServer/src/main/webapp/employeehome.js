@@ -5,7 +5,7 @@ window.addEventListener("load", function(){
 
 async function getLoggedEmployee() {
 
-    let httpResponse = await fetch("ec2-3-88-205-173.compute-1.amazonaws.com:8080/Project1ExpenseReimbursementSystemServer/api/getloggedemployee");
+    let httpResponse = await fetch("http://ec2-3-88-205-173.compute-1.amazonaws.com:8080/Project1ExpenseReimbursementSystemServer/api/getloggedemployee");
     let employee = await httpResponse.json();
     
     if (employee.employeeId == 0) {
@@ -13,7 +13,7 @@ async function getLoggedEmployee() {
         setTimeout(function(){window.open("index.html","_self");},3000);
     }
     else {
-        let httpResponse2 = await fetch("ec2-3-88-205-173.compute-1.amazonaws.com:8080/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements");
+        let httpResponse2 = await fetch("http://ec2-3-88-205-173.compute-1.amazonaws.com:8080/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements");
         let reimbursements = await httpResponse2.json();
         console.log(reimbursements);
         document.getElementById("username").innerHTML = document.getElementById("username").innerHTML + `${employee.userName}`;
