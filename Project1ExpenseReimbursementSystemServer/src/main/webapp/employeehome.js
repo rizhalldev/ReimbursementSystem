@@ -9,8 +9,8 @@ async function getLoggedEmployee() {
     let employee = await httpResponse.json();
     
     if (employee.employeeId == 0) {
-        document.getElementById("info").innerHTML = "<h2>LOGIN CREDENTIALS FAILED!<h2><br> Returning to home page!";
-        setTimeout(function(){window.open("index.html","_self");},3000);
+        // document.getElementById("info").innerHTML = "<h2>LOGIN CREDENTIALS FAILED!<h2><br> Returning to home page!";
+        // setTimeout(function(){window.open("index.html","_self");},3000);
     }
     else {
         let httpResponse2 = await fetch("http://ec2-3-88-205-173.compute-1.amazonaws.com:8080/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements");
