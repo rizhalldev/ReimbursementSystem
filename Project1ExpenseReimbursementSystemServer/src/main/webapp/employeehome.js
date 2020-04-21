@@ -22,7 +22,8 @@ async function getLoggedEmployee() {
         // document.getElementById("division").innerHTML = document.getElementById("division").innerHTML + `${employee.division}`;
         document.getElementById("balance").innerHTML = document.getElementById("balance").innerHTML + `${employee.balance} Gil`;
         document.getElementById("reimburse").innerHTML = document.getElementById("reimburse").innerHTML + `${reimbursements.length}`;
-        
+        console.log(employee);
+        console.log(reimbursements);
     }
 }
 
