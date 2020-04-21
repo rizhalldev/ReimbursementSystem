@@ -14,6 +14,6 @@ async function employeeLogin(){
         body: JSON.stringify(employee)
     }
     
-    let httpResponse = await fetch("http://localhost:8080/Project1ExpenseReimbursementSystemServer/api/employeelogin", settings);
+    let httpResponse = await fetch("ec2-3-88-205-173.compute-1.amazonaws.com:8080/Project1ExpenseReimbursementSystemServer/api/employeelogin", settings);
     window.open("employeehome.html","_self");
 }
