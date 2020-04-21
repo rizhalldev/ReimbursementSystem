@@ -2,11 +2,37 @@
 <html>
     <head>
         <title>Employee Home Page!</title>
+        <link rel="stylesheet" href="employeehome.css">
     </head>
     
     <body id="employee-home-page">
-        <h2>WELCOME TO THE EMPLOYEE HOME PAGE!</h2>
-        <p id="sample-text"></p>
+        <div class="container">
+            <div class="menu main">
+                <div id="username"></div>
+                <div id="id">ID Number: </div>
+                <div id="full_name">Name: </div>
+                <div id="division">Division: </div>
+                <div id="balance">Balance: </div>
+                <div id="reimburse">Total Reimbursements: </div>
+            </div>
+            <div class="menu options">
+                <p>Reimbursements:
+                <button id="view_btn">View</button>
+                <button id="create_btn">Create</button></p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <button>Exit</button>
+            </div>
+            <div class="menu time">
+                <p id="time" class="time"></p>
+                <p id="date" class="time"></p>
+            </div>
+            <div class="menu location"></div>
+        </div>
     </body>
     
     <script src="employeehome.js"></script>
