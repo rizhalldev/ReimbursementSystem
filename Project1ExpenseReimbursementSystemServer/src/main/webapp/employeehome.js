@@ -15,14 +15,18 @@ async function getLoggedEmployee() {
     else {
         let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements`);
         let reimbursements = await httpResponse2.json();
+        let httpResponse3 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getemployeemanager`);
+        let manager = await httpResponse3.json();
+        employee.division = manager.division;
         document.getElementById("username").innerHTML = document.getElementById("username").innerHTML + `${employee.userName}`;
         document.getElementById("id").innerHTML = document.getElementById("id").innerHTML + `${employee.employeeId}`;
         document.getElementById("full_name").innerHTML = document.getElementById("full_name").innerHTML + `${employee.firstName} ${employee.lastName}`;
-        // document.getElementById("division").innerHTML = document.getElementById("division").innerHTML + `${employee.division}`;
+        document.getElementById("division").innerHTML = document.getElementById("division").innerHTML + `${employee.division}`;
         document.getElementById("balance").innerHTML = document.getElementById("balance").innerHTML + `${employee.balance} Gil`;
         document.getElementById("reimburse").innerHTML = document.getElementById("reimburse").innerHTML + `${reimbursements.length}`;
         console.log(employee);
         console.log(reimbursements);
+        console.log(manager);
     }
 }
 
