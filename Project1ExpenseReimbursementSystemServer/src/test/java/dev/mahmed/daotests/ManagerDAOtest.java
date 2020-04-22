@@ -6,13 +6,17 @@ import java.util.Scanner;
 
 import org.junit.Test;
 
+import dev.mahmed.daos.EmployeeDAO;
+import dev.mahmed.daos.EmployeeDAOmaria;
 import dev.mahmed.daos.ManagerDAO;
 import dev.mahmed.daos.ManagerDAOmaria;
+import dev.mahmed.entities.Employee;
 import dev.mahmed.entities.Manager;
 
 public class ManagerDAOtest {
 
 	ManagerDAO mdao = new ManagerDAOmaria();
+	EmployeeDAO edao = new EmployeeDAOmaria();
 	static Scanner keyboard = new Scanner(System.in);
 	
 	@Test
@@ -62,6 +66,12 @@ public class ManagerDAOtest {
 	@Test
 	public void getAllManagers() {
 		System.out.println(mdao.getAllManagers());
+	}
+	
+	@Test
+	public void getManagerByEmployee() {
+		Employee employee = edao.getEmployeeById(3);
+		System.out.println(mdao.getManagerByEmployee(employee));
 	}
 
 }
