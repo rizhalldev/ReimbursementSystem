@@ -15,7 +15,6 @@ async function getLoggedEmployee() {
     else {
         let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements`);
         let reimbursements = await httpResponse2.json();
-        console.log(reimbursements);
         document.getElementById("username").innerHTML = document.getElementById("username").innerHTML + `${employee.userName}`;
         document.getElementById("id").innerHTML = document.getElementById("id").innerHTML + `${employee.employeeId}`;
         document.getElementById("full_name").innerHTML = document.getElementById("full_name").innerHTML + `${employee.firstName} ${employee.lastName}`;
