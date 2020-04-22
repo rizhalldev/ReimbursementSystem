@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import dev.mahmed.entities.Employee;
 import dev.mahmed.entities.Manager;
 import dev.mahmed.utils.ConnectionUtil;
 
@@ -89,6 +90,26 @@ public class ManagerDAOmaria implements ManagerDAO{
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			
+			Manager man = new Manager();
+			man.setManagerId(rs.getInt("MANAGER_ID"));
+			man.setFirstName(rs.getString("FIRST_NAME"));
+			man.setLastName(rs.getString("LAST_NAME"));
+			man.setDivision(rs.getString("DIVISION"));
+			man.setUsername(rs.getString("USERNAME"));
+			man.setPassword(rs.getString("PASSWORD"));
+			return man;
+		} catch (SQLException e) {
+			return null;
+		}
+	}
+	
+	public Manager getManagerByEmployee(Employee employee) {
+		try (Connection conn = ConnectionUtil.createConnection()) {
+			String sql = "SELECT MANAGER.DIVISION,MANAGER.FIRST_NAME, MANAGER.LAST_NAME, MANAGER.MANAGER_ID, MANAGER.PASSWORD, MANAGER.USERNAME FROM project1reimbursements.MANAGER INNER JOIN project1reimbursements.EMPLOYEE ON MANAGER.MANAGER_ID = EMPLOYEE.MANAGER_ID AND EMPLOYEE_ID = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, employee.getEmployeeId());
+			ResultSet rs = ps.executeQuery();
+			rs.next();
 			Manager man = new Manager();
 			man.setManagerId(rs.getInt("MANAGER_ID"));
 			man.setFirstName(rs.getString("FIRST_NAME"));

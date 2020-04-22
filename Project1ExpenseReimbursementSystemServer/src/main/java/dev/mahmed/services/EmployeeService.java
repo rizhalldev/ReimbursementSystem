@@ -3,14 +3,16 @@ package dev.mahmed.services;
 import java.util.List;
 
 import dev.mahmed.entities.Employee;
+import dev.mahmed.entities.Manager;
 import dev.mahmed.entities.Reimbursement;
 
 public interface EmployeeService {
 	// Get username & password and do a check
 	Employee employeeLogin(Employee employee);
 	
-	// Show amountRequested & status
 	List<Reimbursement> getEmployeeReimbursements(Employee employee);
+	
+	Manager getEmployeeManager(Employee employee);
 //	List<Reimbursement> viewOwnPendingReimbursements();
 //	List<Reimbursement> viewOwnNonpendingReimbursements();
 //	

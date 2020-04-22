@@ -5,9 +5,12 @@ import java.util.List;
 
 import dev.mahmed.daos.EmployeeDAO;
 import dev.mahmed.daos.EmployeeDAOmaria;
+import dev.mahmed.daos.ManagerDAO;
+import dev.mahmed.daos.ManagerDAOmaria;
 import dev.mahmed.daos.ReimbursementDAO;
 import dev.mahmed.daos.ReimbursementDAOmaria;
 import dev.mahmed.entities.Employee;
+import dev.mahmed.entities.Manager;
 import dev.mahmed.entities.Reimbursement;
 
 
@@ -16,6 +19,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	
 EmployeeDAO edao = new EmployeeDAOmaria();
 ReimbursementDAO rdao = new ReimbursementDAOmaria();
+ManagerDAO mdao = new ManagerDAOmaria();
 
 	@Override
 	public Employee employeeLogin(Employee employee) {
@@ -41,6 +45,12 @@ ReimbursementDAO rdao = new ReimbursementDAOmaria();
 		List<Reimbursement> reimbursements = new ArrayList<Reimbursement>();
 		reimbursements = rdao.getReimbursementsByEmployee(employee);
 		return reimbursements;
+	}
+
+	@Override
+	public Manager getEmployeeManager(Employee employee) {
+//		Manager manager = mdao.
+		return null;
 	}
 
 }
