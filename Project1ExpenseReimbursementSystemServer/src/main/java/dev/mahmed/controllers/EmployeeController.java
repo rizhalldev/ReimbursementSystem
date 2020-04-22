@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import dev.mahmed.entities.Employee;
+import dev.mahmed.entities.Manager;
 import dev.mahmed.entities.Reimbursement;
 import dev.mahmed.services.EmployeeService;
 import dev.mahmed.services.EmployeeServiceImpl;
@@ -45,10 +46,22 @@ public class EmployeeController {
 		Gson gson = new Gson();
 		String employeeJson = (String) session.getAttribute("employee");
 		Employee employee = gson.fromJson(employeeJson, Employee.class);
-		PrintWriter pw = response.getWriter();
 		List<Reimbursement> reimbursements = eserv.getEmployeeReimbursements(employee);
 		String json = gson.toJson(reimbursements);
 		session.setAttribute("reimbursements", json);
+		PrintWriter pw = response.getWriter();
+		pw.append(json);
+	}
+	
+	public void getEmployeeManager(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		Gson gson = new Gson();
+		String employeeJson = (String) session.getAttribute("employee");
+		Employee employee = gson.fromJson(employeeJson, Employee.class);
+		Manager manager = eserv.getEmployeeManager(employee);
+		String json = gson.toJson(manager);
+		session.setAttribute("manager", json);
+		PrintWriter pw = response.getWriter();
 		pw.append(json);
 	}
 
