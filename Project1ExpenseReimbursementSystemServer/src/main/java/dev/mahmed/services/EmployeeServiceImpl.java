@@ -49,8 +49,8 @@ ManagerDAO mdao = new ManagerDAOmaria();
 
 	@Override
 	public Manager getEmployeeManager(Employee employee) {
-//		Manager manager = mdao.
-		return null;
+		Manager manager = mdao.getManagerByEmployee(employee);
+		return manager;
 	}
 
 }
