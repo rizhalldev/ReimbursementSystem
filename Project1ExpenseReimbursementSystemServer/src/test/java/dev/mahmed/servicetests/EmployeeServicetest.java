@@ -28,5 +28,14 @@ public class EmployeeServicetest {
 		employee = eserv.employeeLogin(employee);
 		System.out.println(eserv.getEmployeeReimbursements(employee));
 	}
+	
+	@Test
+	public void getEmployeeManager() {
+		Employee employee = new Employee();
+		employee.setUserName("Snake");
+		employee.setPassword("diarrhea");
+		employee = eserv.employeeLogin(employee);
+		System.out.println(eserv.getEmployeeManager(employee));
+	}
 
 }
