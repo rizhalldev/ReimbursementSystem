@@ -24,8 +24,8 @@ private static Connection conn = null;
 			e1.printStackTrace();
 		}
 		try {
-		FileInputStream in = new FileInputStream(ConnectionUtil.class.getClassLoader().getResource("/home/ec2-user/.jenkins/workspace/Project1ReimbursementSystem/Project1ExpenseReimbursementSystemServer/src/main/resources/connection.properties").getFile());
-//		FileInputStream in = new FileInputStream(ConnectionUtil.class.getClassLoader().getResource("connection.properties").getFile());
+//		FileInputStream in = new FileInputStream(ConnectionUtil.class.getClassLoader().getResource("/home/ec2-user/.jenkins/workspace/Project1ReimbursementSystem/Project1ExpenseReimbursementSystemServer/src/main/resources/connection.properties").getFile());
+		FileInputStream in = new FileInputStream(ConnectionUtil.class.getClassLoader().getResource("connection.properties").getFile());
 		props.load(in);
 					
 		String details = props.getProperty("condetails");
