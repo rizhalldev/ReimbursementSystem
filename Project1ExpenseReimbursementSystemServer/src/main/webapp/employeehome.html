@@ -15,7 +15,12 @@
                 <div id="balance">Balance: </div>
                 <div id="reimburse">Total Reimbursements: </div>
             </div>
-            <div class="menu options">
+            <div class="menu main reimbursements" id="reimbursements">
+                <br><br><br><br><br>
+                <table id="list">
+                </table>
+            </div>
+            <div class="menu options" id="options">
                 <p>Reimbursements:
                 <button id="view_btn">View</button>
                 <button id="create_btn">Create</button></p>
@@ -27,11 +32,19 @@
                 <br>
                 <button>Exit</button>
             </div>
+            <div class="menu sort_options" id="sort_options">
+                <button>All</button>
+                <button>Pending</button>
+                <button>Granted</button>
+                <button>Partial</button>
+                <button>Declined</button>
+                <button>Back</button>
+            </div>
             <div class="menu time">
                 <p id="time" class="time"></p>
                 <p id="date" class="time"></p>
             </div>
-            <div class="menu location"></div>
+            <div class="menu location"><p id="location">Employee Homepage</p></div>
         </div>
     </body>
     

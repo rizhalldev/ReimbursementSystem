@@ -47,6 +47,10 @@ div.main{
     padding-top: 30;
     position: absolute;
     top: 30px;
+    visibility: visible;
+}
+div.reimbursements{
+    visibility: hidden;
 }
 div.options{
     width:175px;
@@ -56,24 +60,32 @@ div.options{
     top: 0;
     text-align: left;
     font-size: 22pt;
+    visibility: visible;
 }
 div.time{
     height: 75px;
     width: 175px;
     position: absolute;
     right: 0;
-    bottom: 72px;
+    bottom: 4px;
     padding: 1px 12px 10px 12px;
     font-size: 24pt;
     text-align: left;
 }
 div.location{
-    height: 65px;
-    width: 225px;
+    height: 40px;
+    width: 300px;
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 570px;
     padding: 1px 30px;
 }
-
+div.sort_options{
+    width: 680px;
+    height: 40px;
+    position: absolute;
+    left: 4px;
+    top: 34px;
+    visibility: hidden;
+}
 
