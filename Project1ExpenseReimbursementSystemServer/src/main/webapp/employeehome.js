@@ -1,7 +1,14 @@
 window.addEventListener("load", function(){
     getLoggedEmployee();
-    adjustTime();
+    setTime();
 })
+document.getElementById("view_btn").addEventListener("click", function(){
+    document.getElementById("options").style.visibility = "hidden";
+    document.getElementById("sort_options").style.visibility = "visible";
+    document.getElementById("info").style.visibility = "hidden";
+    document.getElementById("reimbursements").style.visibility = "visible";
+    viewAllReimbursements();
+});
 
 async function getLoggedEmployee() {
 
@@ -30,7 +37,19 @@ async function getLoggedEmployee() {
     }
 }
 
-function adjustTime(){
+async function viewAllReimbursements(){
+    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getsessionreimbursements`);
+    let reimbursements = await httpResponse2.json();
+    document.getElementById("list").innerHTML = "<thead><th>ID</th><th>Category</th><th>Requested</th><th>Status</th></thead>";
+    for (i = 0; i < reimbursements.length; i++) {
+        document.getElementById("list").innerHTML = document.getElementById("list").innerHTML +
+        `<tr id="${i}"><td>${reimbursements[i].reimbursementId}</td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
+    }
+    console.log("6");
+    console.log(reimbursements.length);
+}
+
+function setTime(){
     let time = new Date();
     let hours = ("0" + time.getHours()).slice(-2);
     let minutes = ("0" + time.getMinutes()).slice(-2);
@@ -39,5 +58,4 @@ function adjustTime(){
     hours = hours % 12 ? hours % 12 : 12;
     document.getElementById("time").innerHTML = `<br>${hours}:${minutes}:${seconds} ${merid}<br>${time.getMonth()} - ${time.getDay()} - ${time.getFullYear()}`;
 }
-
-setInterval(adjustTime,1000);
+setInterval(setTime,1000);

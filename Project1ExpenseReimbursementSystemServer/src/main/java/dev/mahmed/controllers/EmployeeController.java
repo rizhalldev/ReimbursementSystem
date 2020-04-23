@@ -64,5 +64,12 @@ public class EmployeeController {
 		PrintWriter pw = response.getWriter();
 		pw.append(json);
 	}
+	
+	public void getSessionReimbursements(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		String reimbursementJson = (String) session.getAttribute("reimbursements");
+		PrintWriter pw = response.getWriter();
+		pw.append(reimbursementJson);
+	}
 
 }
