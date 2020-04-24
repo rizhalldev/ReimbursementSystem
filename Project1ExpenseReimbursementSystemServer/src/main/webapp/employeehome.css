@@ -88,4 +88,9 @@ div.sort_options{
     top: 34px;
     visibility: hidden;
 }
-
+div.details{
+    position: absolute;
+    height: 250px;
+    width: 500px;
+    visibility: hidden;
+}

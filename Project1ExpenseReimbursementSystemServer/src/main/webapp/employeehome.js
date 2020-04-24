@@ -12,11 +12,13 @@ document.getElementById("view_btn").addEventListener("click", function(){
 document.getElementById("back_btn").addEventListener("click", function(){
     window.open("employeehome.html","_self");
 });
+
 document.getElementById("pending_btn").addEventListener("click", function(){ viewStatusReimbursements("Pending")});
 document.getElementById("granted_btn").addEventListener("click", function(){ viewStatusReimbursements("Granted")});
 document.getElementById("partial_btn").addEventListener("click", function(){ viewStatusReimbursements("Partial")});
 document.getElementById("declined_btn").addEventListener("click", function(){ viewStatusReimbursements("Declined")});
 document.getElementById("all_btn").addEventListener("click", viewAllReimbursements);
+
 async function getLoggedEmployee() {
 
     let httpResponse = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getloggedemployee`);
@@ -50,7 +52,7 @@ async function viewAllReimbursements(){
     document.getElementById("list").innerHTML = "<thead><th>ID</th><th>Category</th><th>Requested</th><th>Status</th></thead>";
     for (i = 0; i < reimbursements.length; i++) {
         document.getElementById("list").innerHTML = document.getElementById("list").innerHTML +
-        `<tr id="${i}"><td>${reimbursements[i].reimbursementId}</td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
+        `<tr><td><button id="${i}" class="reimbursement" onclick="viewDetails(${i})">${reimbursements[i].reimbursementId}</button></td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
     }
     console.log("6");
     console.log(reimbursements.length);
@@ -63,10 +65,16 @@ async function viewStatusReimbursements(aStatus){
     for (i = 0; i < reimbursements.length; i++) {
         if (reimbursements[i].status == aStatus) {
         document.getElementById("list").innerHTML = document.getElementById("list").innerHTML +
-        `<tr id="${i}"><td>${reimbursements[i].reimbursementId}</td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
+        `<tr id="${i}" class="reimbursement"><td>${reimbursements[i].reimbursementId}</td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
     }}
     console.log("6");
     console.log(reimbursements.length);
+}
+
+function viewDetails(i){
+    console.log(i);
+    document.getElementById("details").style.visibility = "visible";
+    document.getElementById("sort_options").style.visibility = "hidden";
 }
 
 function setTime(){
