@@ -13,6 +13,7 @@ document.getElementById("view_btn").addEventListener("click", function(){
 document.getElementById("back_btn").addEventListener("click", function(){
     window.open("employeehome.html","_self");
 });
+document.getElementById("pending_btn").addEventListener("click", viewPendingReimbursements);
 
 async function getLoggedEmployee() {
 
@@ -49,6 +50,19 @@ async function viewAllReimbursements(){
         document.getElementById("list").innerHTML = document.getElementById("list").innerHTML +
         `<tr id="${i}"><td>${reimbursements[i].reimbursementId}</td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
     }
+    console.log("6");
+    console.log(reimbursements.length);
+}
+
+async function viewPendingReimbursements(){
+    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getsessionreimbursements`);
+    let reimbursements = await httpResponse2.json();
+    document.getElementById("list").innerHTML = "<thead><th>ID</th><th>Category</th><th>Requested</th><th>Status</th></thead>";
+    for (i = 0; i < reimbursements.length; i++) {
+        if (reimbursements[i].status == "Pending") {
+        document.getElementById("list").innerHTML = document.getElementById("list").innerHTML +
+        `<tr id="${i}"><td>${reimbursements[i].reimbursementId}</td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
+    }}
     console.log("6");
     console.log(reimbursements.length);
 }
