@@ -12,7 +12,10 @@ document.getElementById("view_btn").addEventListener("click", function(){
 document.getElementById("back_btn").addEventListener("click", function(){
     window.open("employeehome.html","_self");
 });
-document.getElementById("pending_btn").addEventListener("click", viewPendingReimbursements);
+document.getElementById("pending_btn").addEventListener("click", function(){ viewStatusReimbursements("Pending")});
+document.getElementById("granted_btn").addEventListener("click", function(){ viewStatusReimbursements("Granted")});
+document.getElementById("partial_btn").addEventListener("click", function(){ viewStatusReimbursements("Partial")});
+document.getElementById("declined_btn").addEventListener("click", function(){ viewStatusReimbursements("Declined")});
 document.getElementById("all_btn").addEventListener("click", viewAllReimbursements);
 async function getLoggedEmployee() {
 
@@ -53,12 +56,12 @@ async function viewAllReimbursements(){
     console.log(reimbursements.length);
 }
 
-async function viewPendingReimbursements(){
+async function viewStatusReimbursements(aStatus){
     let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getsessionreimbursements`);
     let reimbursements = await httpResponse2.json();
     document.getElementById("list").innerHTML = "<thead><th>ID</th><th>Category</th><th>Requested</th><th>Status</th></thead>";
     for (i = 0; i < reimbursements.length; i++) {
-        if (reimbursements[i].status == "Pending") {
+        if (reimbursements[i].status == aStatus) {
         document.getElementById("list").innerHTML = document.getElementById("list").innerHTML +
         `<tr id="${i}"><td>${reimbursements[i].reimbursementId}</td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
     }}
