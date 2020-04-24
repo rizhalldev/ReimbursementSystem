@@ -10,6 +10,10 @@ document.getElementById("view_btn").addEventListener("click", function(){
     viewAllReimbursements();
 });
 
+document.getElementById("back_btn").addEventListener("click", function(){
+    window.open("employeehome.html","_self");
+});
+
 async function getLoggedEmployee() {
 
     let httpResponse = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getloggedemployee`);
