@@ -19,6 +19,16 @@ document.getElementById("partial_btn").addEventListener("click", function(){ vie
 document.getElementById("declined_btn").addEventListener("click", function(){ viewStatusReimbursements("Declined")});
 document.getElementById("all_btn").addEventListener("click", viewAllReimbursements);
 
+document.getElementById("detail_back_btn").addEventListener("click", function(){
+    document.getElementById("cancel_btn").style.visibility = "hidden";
+    document.getElementById("details").style.visibility = "hidden";
+    document.getElementById("sort_options").style.visibility = "visible";
+});
+document.getElementById("cancel_btn").addEventListener("click", function(){
+    cancelReimbursement();
+    viewAllReimbursements();
+});
+
 async function getLoggedEmployee() {
 
     let httpResponse = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getloggedemployee`);
@@ -47,7 +57,7 @@ async function getLoggedEmployee() {
 }
 
 async function viewAllReimbursements(){
-    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getsessionreimbursements`);
+    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements`);
     let reimbursements = await httpResponse2.json();
     document.getElementById("list").innerHTML = "<thead><th>ID</th><th>Category</th><th>Requested</th><th>Status</th></thead>";
     for (i = 0; i < reimbursements.length; i++) {
@@ -59,7 +69,7 @@ async function viewAllReimbursements(){
 }
 
 async function viewStatusReimbursements(aStatus){
-    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getsessionreimbursements`);
+    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements`);
     let reimbursements = await httpResponse2.json();
     document.getElementById("list").innerHTML = "<thead><th>ID</th><th>Category</th><th>Requested</th><th>Status</th></thead>";
     for (i = 0; i < reimbursements.length; i++) {
@@ -71,10 +81,35 @@ async function viewStatusReimbursements(aStatus){
     console.log(reimbursements.length);
 }
 
-function viewDetails(i){
+async function viewDetails(i){
     console.log(i);
     document.getElementById("details").style.visibility = "visible";
     document.getElementById("sort_options").style.visibility = "hidden";
+    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getsessionreimbursements`);
+    let reimbursements = await httpResponse2.json();
+    let theReimbursement = reimbursements[i];
+    if (theReimbursement.status == "Pending")
+        document.getElementById("cancel_btn").style.visibility = "visible";
+    document.getElementById("reimb_id").innerHTML = theReimbursement.reimbursementId;
+    document.getElementById("reimb_category").innerHTML = theReimbursement.category;
+    document.getElementById("reimb_date").innerHTML = theReimbursement.date;
+    document.getElementById("reimb_status").innerHTML = theReimbursement.status;
+    document.getElementById("reimb_requested").innerHTML = theReimbursement.amountRequested;
+    document.getElementById("reimb_paid").innerHTML = theReimbursement.amountPaid;
+    if (theReimbursement.details.length > 0)
+        document.getElementById("reimb_detail1").innerHTML = theReimbursement.details.substring(0,200);
+    if (theReimbursement.details.length > 200)
+        document.getElementById("reimb_detail2").innerHTML = theReimbursement.details.substring(200);
+}
+
+async function cancelReimbursement(){
+    let anId = document.getElementById("reimb_id").innerHTML;
+    let req = `http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/cancelreimbursement?id=${document.getElementById("reimb_id").innerHTML}`;
+    let httpResponse = await fetch(req);
+    let reimb = await httpResponse.json();
+    document.getElementById("cancel_btn").style.visibility = "hidden";
+    document.getElementById("details").style.visibility = "hidden";
+    document.getElementById("sort_options").style.visibility = "visible";
 }
 
 function setTime(){

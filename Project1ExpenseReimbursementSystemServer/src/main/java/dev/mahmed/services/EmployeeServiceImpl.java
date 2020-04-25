@@ -53,4 +53,13 @@ ManagerDAO mdao = new ManagerDAOmaria();
 		return manager;
 	}
 
+	@Override
+	public Reimbursement cancelReimbursement(int id) {
+		Reimbursement reimbursement = rdao.getReimbursementById(id);
+		reimbursement.setStatus("Canceled");
+		rdao.updateReimbursement(reimbursement);
+		System.out.println(reimbursement);
+		return reimbursement;
+	}
+
 }

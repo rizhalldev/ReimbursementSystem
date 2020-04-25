@@ -27,6 +27,7 @@ public class DispatcherServlet extends HttpServlet {
 		case "/Project1ExpenseReimbursementSystemServer/api/getemployeereimbursements": econtrol.getEmployeeReimbursements(request, response); break;
 		case "/Project1ExpenseReimbursementSystemServer/api/getemployeemanager": econtrol.getEmployeeManager(request, response); break;
 		case "/Project1ExpenseReimbursementSystemServer/api/getsessionreimbursements": econtrol.getSessionReimbursements(request, response); break;
+		case "/Project1ExpenseReimbursementSystemServer/api/cancelreimbursement": econtrol.cancelReimbursement(request, response); break;
 		default: break;
 		}
 	}

@@ -71,5 +71,14 @@ public class EmployeeController {
 		PrintWriter pw = response.getWriter();
 		pw.append(reimbursementJson);
 	}
+	
+	public void cancelReimbursement(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Gson gson = new Gson();
+		int anId = Integer.parseInt(request.getParameter("id"));
+		Reimbursement reimbursement = eserv.cancelReimbursement(anId);
+		PrintWriter pw = response.getWriter();
+		String reimbursementJson = gson.toJson(reimbursement);
+		pw.append(reimbursementJson);
+	}
 
 }
