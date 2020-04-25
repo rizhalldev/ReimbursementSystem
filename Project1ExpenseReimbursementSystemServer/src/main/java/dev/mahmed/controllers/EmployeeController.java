@@ -80,5 +80,28 @@ public class EmployeeController {
 		String reimbursementJson = gson.toJson(reimbursement);
 		pw.append(reimbursementJson);
 	}
+	
+	public void submitRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession();
+		Gson gson = new Gson();
+		String employeeJson = (String) session.getAttribute("employee");
+		Employee employee = gson.fromJson(employeeJson, Employee.class);
+		
+		int amountRequested = Integer.parseInt(request.getParameter("amount"));
+		String category = request.getParameter("category");
+		String details = request.getParameter("details");
+		details = String.format("%1$-200s", details);
+		int employeeId = employee.getEmployeeId();
+		
+		Reimbursement reimbursement = new Reimbursement();
+		reimbursement.setAmountRequested(amountRequested);
+		reimbursement.setCategory(category);
+		reimbursement.setDetails(details);
+		reimbursement.setEmployeeId(employeeId);
+		Reimbursement r2 = eserv.submitReimbursement(reimbursement);
+		
+		PrintWriter pw = response.getWriter();
+		pw.append(gson.toJson(r2));
+	}
 
 }

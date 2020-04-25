@@ -18,18 +18,20 @@ public class ReimbursementDAOmaria implements ReimbursementDAO{
 	@Override
 	public Reimbursement createReimbursement(Reimbursement reimbursement) {
 		try (Connection conn = ConnectionUtil.createConnection()) {
-			String sql = "INSERT INTO project1reimbursements.REIMBURSEMENT VALUES (0,?,'Pending',?,0,?,?,?)";
+			String sql = "INSERT INTO project1reimbursements.REIMBURSEMENT VALUES (0,?,?,?,0,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, reimbursement.getAmountRequested());
-			ps.setString(2, reimbursement.getCategory());
-			ps.setInt(3, reimbursement.getEmployeeId());
-			ps.setDate(4, reimbursement.getDate());
-			ps.setString(5, reimbursement.getDetails());
+			ps.setString(2, "Pending");
+			ps.setString(3, reimbursement.getCategory());
+			ps.setInt(4, reimbursement.getEmployeeId());
+			ps.setDate(5, reimbursement.getDate());
+			ps.setString(6, reimbursement.getDetails());
 			ps.execute();
 			ResultSet rs = ps.getGeneratedKeys();
 			rs.next();
 			int key = rs.getInt("REIMBURSEMENT_ID");
 			reimbursement.setReimbursementId(key);
+			reimbursement.setStatus("Pending");
 			return reimbursement;
 		} catch (SQLException e) {
 			return null;
