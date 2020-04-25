@@ -73,7 +73,7 @@
                     </select>
                 </div>
                 <div id="form_amount">Amount to request: <input type="number" class="form" id="amount_input" placeholder="Input Amount"></div>
-                <div id="form_comment">Comment (Optional):<br><textarea class="form" maxlength="200" id="comment_input"></textarea></div>
+                <div id="form_comment">Comment (Optional):<br><textarea class="form" maxlength="200" id="comment_input" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9 .!?]/g, '')"></textarea></div>
                 <div id="form_date">Date of submission: </div>
                 <button id="submit_btn">Submit Request</button>
                 <button id="form_back_btn">Back</button>
