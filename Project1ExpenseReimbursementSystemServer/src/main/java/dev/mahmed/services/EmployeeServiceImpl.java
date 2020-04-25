@@ -1,5 +1,6 @@
 package dev.mahmed.services;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +60,14 @@ ManagerDAO mdao = new ManagerDAOmaria();
 		reimbursement.setStatus("Canceled");
 		rdao.updateReimbursement(reimbursement);
 		System.out.println(reimbursement);
+		return reimbursement;
+	}
+
+	@Override
+	public Reimbursement submitReimbursement(Reimbursement reimbursement) {
+		Date d = new Date(System.currentTimeMillis());
+		reimbursement.setDate(d);
+		reimbursement = rdao.createReimbursement(reimbursement);
 		return reimbursement;
 	}
 

@@ -41,6 +41,9 @@ public class DispatcherServlet extends HttpServlet {
 		case "/Project1ExpenseReimbursementSystemServer/api/cancelreimbursement":
 			econtrol.cancelReimbursement(request, response);
 			break;
+		case "/Project1ExpenseReimbursementSystemServer/api/submitrequest":
+			econtrol.submitRequest(request, response);
+			break;
 		default:
 			break;
 		}

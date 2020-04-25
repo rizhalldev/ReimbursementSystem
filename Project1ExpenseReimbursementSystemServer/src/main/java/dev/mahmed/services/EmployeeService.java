@@ -20,6 +20,7 @@ public interface EmployeeService {
 //	Reimbursement viewReimbursement(Reimbursement reimbursement);
 //	
 	Reimbursement cancelReimbursement(int id);
+	Reimbursement submitReimbursement(Reimbursement reimbursement);
 //	Reimbursement cancelReimbursement(Reimbursement reimbursement);
 //	
 //	// Pass Reimbursement with:, add employeeId, get amountRequested (input), get category (select), get details (input, up to 200 chars),date=CURRENTDATE, AmountPaid=0, status="pending"

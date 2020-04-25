@@ -119,12 +119,20 @@ div.rinfo{
 div.creator{
     position: absolute;
     height: 250px;
-    width: 500px;
+    width: 532px;
     visibility: hidden;
     padding: 55px;
     padding-top: 19px;
-    padding-left: 26px;
+    padding-left: 17px;
+    left: 213px;
 }
 .form{
     background-color: dodgerblue;
+}
+input#amount_input {
+    width: 184px;
+}
+textarea#comment_input {
+    width: 565px;
+    height: 145px;
 }
