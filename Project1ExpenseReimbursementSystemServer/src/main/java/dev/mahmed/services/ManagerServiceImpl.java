@@ -1,5 +1,9 @@
 package dev.mahmed.services;
 
+import java.util.List;
+
+import dev.mahmed.daos.EmployeeDAO;
+import dev.mahmed.daos.EmployeeDAOmaria;
 import dev.mahmed.daos.ManagerDAO;
 import dev.mahmed.daos.ManagerDAOmaria;
 import dev.mahmed.entities.Employee;
@@ -8,6 +12,7 @@ import dev.mahmed.entities.Manager;
 public class ManagerServiceImpl implements ManagerService{
 	
 ManagerDAO mdao = new ManagerDAOmaria();
+EmployeeDAO edao = new EmployeeDAOmaria();
 
 	@Override
 	public Manager managerLogin(Manager manager) {
@@ -25,6 +30,11 @@ ManagerDAO mdao = new ManagerDAOmaria();
 			bad.setUsername("");
 			return bad;
 		}
+	}
+
+	@Override
+	public List<Employee> getManagerEmployees(Manager manager) {
+		return edao.getEmployeesByManager(manager);
 	}
 
 }

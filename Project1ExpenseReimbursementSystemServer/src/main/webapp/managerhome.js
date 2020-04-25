@@ -16,6 +16,14 @@ async function getLoggedManager() {
     }
     else {
         console.log(manager);
+        let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getmanageremployees`);
+        let employees = await httpResponse2.json();
+        console.log(employees);
+        document.getElementById("username").innerHTML = document.getElementById("username").innerHTML + manager.username;
+        document.getElementById("id").innerHTML = document.getElementById("id").innerHTML + manager.managerId;
+        document.getElementById("full_name").innerHTML = document.getElementById("full_name").innerHTML + manager.firstName + " " + manager.lastName;
+        document.getElementById("division").innerHTML = document.getElementById("division").innerHTML + manager.division;
+        document.getElementById("employee_count").innerHTML = document.getElementById("employee_count").innerHTML + employees.length;
     }
 }
 
