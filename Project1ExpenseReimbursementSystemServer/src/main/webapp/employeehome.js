@@ -1,3 +1,4 @@
+//-------EVENT LISTENERS-------//
 window.addEventListener("load", function(){
     getLoggedEmployee();
     setTime();
@@ -34,7 +35,11 @@ document.getElementById("create_btn").addEventListener("click", function(){
 document.getElementById("form_back_btn").addEventListener("click", function(){
     window.open("employeehome.html","_self");
 });
+document.getElementById("submit_btn").addEventListener("click", function(){
+    submitRequest();
+});
 
+//---------FUNCTIONS---------//
 async function getLoggedEmployee() {
 
     let httpResponse = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getloggedemployee`);
@@ -118,6 +123,18 @@ async function cancelReimbursement(){
     document.getElementById("sort_options").style.visibility = "visible";
 }
 
+async function submitRequest(){
+    let category = document.getElementById("category_select").value;
+    let amount = document.getElementById("amount_input").value;
+    let details = document.getElementById("comment_input").value.replace(/[ .!?]/g,"_");
+    let request = `http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/submitrequest?amount=${amount}&category=${category}&details=${details}`;
+    console.log(request);
+    let httpResponse = await fetch(request);
+    let reimb = await httpResponse.json();
+    window.open("employeehome.html","_self");
+}
+
+//---------OTHER FUNCTIONALITIES----------//
 function setTime(){
     let time = new Date();
     let hours = ("0" + time.getHours()).slice(-2);
