@@ -116,3 +116,15 @@ div.rinfo{
     display: inline-block;
     position: relative;
 }
+div.creator{
+    position: absolute;
+    height: 250px;
+    width: 500px;
+    visibility: hidden;
+    padding: 55px;
+    padding-top: 19px;
+    padding-left: 26px;
+}
+.form{
+    background-color: dodgerblue;
+}

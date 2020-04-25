@@ -1,7 +1,7 @@
 window.addEventListener("load", function(){
     getLoggedEmployee();
     setTime();
-})
+});
 document.getElementById("view_btn").addEventListener("click", function(){
     document.getElementById("options").style.visibility = "hidden";
     document.getElementById("sort_options").style.visibility = "visible";
@@ -12,13 +12,11 @@ document.getElementById("view_btn").addEventListener("click", function(){
 document.getElementById("back_btn").addEventListener("click", function(){
     window.open("employeehome.html","_self");
 });
-
 document.getElementById("pending_btn").addEventListener("click", function(){ viewStatusReimbursements("Pending")});
 document.getElementById("granted_btn").addEventListener("click", function(){ viewStatusReimbursements("Granted")});
 document.getElementById("partial_btn").addEventListener("click", function(){ viewStatusReimbursements("Partial")});
 document.getElementById("declined_btn").addEventListener("click", function(){ viewStatusReimbursements("Declined")});
 document.getElementById("all_btn").addEventListener("click", viewAllReimbursements);
-
 document.getElementById("detail_back_btn").addEventListener("click", function(){
     document.getElementById("cancel_btn").style.visibility = "hidden";
     document.getElementById("details").style.visibility = "hidden";
@@ -27,6 +25,14 @@ document.getElementById("detail_back_btn").addEventListener("click", function(){
 document.getElementById("cancel_btn").addEventListener("click", function(){
     cancelReimbursement();
     viewAllReimbursements();
+});
+document.getElementById("create_btn").addEventListener("click", function(){
+    document.getElementById("options").style.visibility = "hidden";
+    // document.getElementById("info").style.visibility = "hidden";
+    document.getElementById("creator").style.visibility = "visible";
+});
+document.getElementById("form_back_btn").addEventListener("click", function(){
+    window.open("employeehome.html","_self");
 });
 
 async function getLoggedEmployee() {
