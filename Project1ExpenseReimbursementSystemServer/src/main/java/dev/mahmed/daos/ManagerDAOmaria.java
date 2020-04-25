@@ -61,6 +61,7 @@ public class ManagerDAOmaria implements ManagerDAO{
 	}
 
 	public Manager getManagerByUsername(String username) {
+		Manager man = new Manager();
 		try (Connection conn = ConnectionUtil.createConnection()) {
 			String sql = "SELECT * FROM project1reimbursements.MANAGER WHERE USERNAME = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -68,7 +69,6 @@ public class ManagerDAOmaria implements ManagerDAO{
 			ResultSet rs = ps.executeQuery();
 			rs.next();
 			
-			Manager man = new Manager();
 			man.setManagerId(rs.getInt("MANAGER_ID"));
 			man.setFirstName(rs.getString("FIRST_NAME"));
 			man.setLastName(rs.getString("LAST_NAME"));
@@ -77,7 +77,10 @@ public class ManagerDAOmaria implements ManagerDAO{
 			man.setPassword(rs.getString("PASSWORD"));
 			return man;
 		} catch (SQLException e) {
-			return null;
+			man.setUsername("");
+			man.setPassword("");
+			man.setManagerId(0);
+			return man;
 		}
 	}
 

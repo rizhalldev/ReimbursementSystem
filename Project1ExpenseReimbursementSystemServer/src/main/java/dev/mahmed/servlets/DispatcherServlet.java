@@ -31,6 +31,9 @@ public class DispatcherServlet extends HttpServlet {
 		case "/Project1ExpenseReimbursementSystemServer/api/getloggedmanager":
 			mcontrol.getLoggedManager(request, response);
 			break;
+		case "/Project1ExpenseReimbursementSystemServer/api/getmanageremployees":
+			mcontrol.getManagerEmployees(request, response);
+			break;
 			
 		case "/Project1ExpenseReimbursementSystemServer/api/employeelogin":
 			econtrol.employeeLogin(request, response);

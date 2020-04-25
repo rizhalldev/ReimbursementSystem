@@ -1,6 +1,8 @@
 package dev.mahmed.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +38,18 @@ public void getLoggedManager(HttpServletRequest request, HttpServletResponse res
 	
 	String manager = (String) request.getSession().getAttribute("manager");
 	response.getWriter().append(manager);
+}
+
+public void getManagerEmployees(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	HttpSession session = request.getSession();
+	Gson gson = new Gson();
+	String managerJson = (String) session.getAttribute("manager");
+	Manager manager = gson.fromJson(managerJson, Manager.class);
+	List<Employee> employees = mserv.getManagerEmployees(manager);
+	String employeesJson = gson.toJson(employees);
+	session.setAttribute("employees", employeesJson);
+	PrintWriter pw = response.getWriter();
+	pw.append(employeesJson);
 }
 
 }

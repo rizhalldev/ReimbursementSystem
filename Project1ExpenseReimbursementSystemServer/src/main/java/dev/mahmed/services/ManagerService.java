@@ -11,6 +11,7 @@ public interface ManagerService {
 	// get username & password
 	Manager managerLogin(Manager manager);
 //	
+	List<Employee> getManagerEmployees(Manager manager);
 //	List<Reimbursement> viewAllReimbursements();
 //	List<Reimbursement> viewReimbursementsByDivision(Manager manager); // Check by own division
 //	List<Reimbursement> viewMyReimbursements(Manager manager); // Check by own managerId
