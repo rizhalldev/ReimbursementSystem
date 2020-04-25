@@ -1,0 +1,82 @@
+@font-face{
+    font-family: finalFantasy;
+    src: url(Reactor7.woff);
+}
+body{
+    background-color: black;
+}
+div.menu{
+    display:inline-block;
+    background-color: blue;
+    padding: 30px;
+    background: -webkit-linear-gradient(rgb(0, 0, 230),rgb(0, 0, 117));
+    border-style: solid;
+    border-color: rgb(187, 187, 187);
+    border-radius: 10px;
+    border-width: 2px;
+    box-shadow: 2px 2px darkgray,
+        -2px -2px darkgray,
+        2px -2px darkgray,
+        -2px 2px darkgray;
+}
+div.menu *{
+    font-family: finalFantasy;
+    color: white;
+    font-size: xx-large;
+    font-weight: 575;
+    text-shadow: 2px 1px slategrey; 
+    margin: 0;
+}
+div.menu *::selection{
+    background: transparent;
+    color: magenta;
+    box-shadow: mediumvioletred;
+}
+button{
+    border:0;
+}
+div.container{
+    position: relative;
+    width: 925px;
+    height: 570px;
+}
+div.main{
+    width: 700px;
+    height: 500px;
+    margin: 200 0 0 0;
+    padding-top: 30;
+    position: absolute;
+    top: 30px;
+    visibility: visible;
+}
+div.reimbursements{
+    visibility: hidden;
+}
+div.options{
+    width:175px;
+    height: 325px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: left;
+    font-size: 22pt;
+    visibility: visible;
+}
+div.time{
+    height: 75px;
+    width: 175px;
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    padding: 1px 12px 10px 12px;
+    font-size: 24pt;
+    text-align: left;
+}
+div.location{
+    height: 40px;
+    width: 300px;
+    position: absolute;
+    right: 0;
+    top: 570px;
+    padding: 1px 30px;
+}
