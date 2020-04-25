@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.mahmed.controllers.EmployeeController;
+import dev.mahmed.controllers.ManagerController;
 
 public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,13 +17,21 @@ public class DispatcherServlet extends HttpServlet {
 	}
 
 	EmployeeController econtrol = new EmployeeController();
+	ManagerController mcontrol = new ManagerController();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
 		System.out.println(uri);
 		switch (uri) {
-
+		
+		case "/Project1ExpenseReimbursementSystemServer/api/managerlogin":
+			mcontrol.managerLogin(request, response);
+			break;
+		case "/Project1ExpenseReimbursementSystemServer/api/getloggedmanager":
+			mcontrol.getLoggedManager(request, response);
+			break;
+			
 		case "/Project1ExpenseReimbursementSystemServer/api/employeelogin":
 			econtrol.employeeLogin(request, response);
 			break;

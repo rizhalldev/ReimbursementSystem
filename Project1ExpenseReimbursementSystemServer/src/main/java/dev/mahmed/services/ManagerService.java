@@ -9,7 +9,7 @@ import dev.mahmed.entities.Reimbursement;
 public interface ManagerService {
 	
 	// get username & password
-//	Manager managerLogin(Manager manager);
+	Manager managerLogin(Manager manager);
 //	
 //	List<Reimbursement> viewAllReimbursements();
 //	List<Reimbursement> viewReimbursementsByDivision(Manager manager); // Check by own division

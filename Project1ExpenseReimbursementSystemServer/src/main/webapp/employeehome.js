@@ -1,4 +1,4 @@
-//-------EVENT LISTENERS-------//
+//--------------EVENT LISTENERS--------------//
 window.addEventListener("load", function(){
     getLoggedEmployee();
     setTime();
@@ -39,7 +39,7 @@ document.getElementById("submit_btn").addEventListener("click", function(){
     submitRequest();
 });
 
-//---------FUNCTIONS---------//
+//---------------FUNCTIONS---------------//
 async function getLoggedEmployee() {
 
     let httpResponse = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getloggedemployee`);
