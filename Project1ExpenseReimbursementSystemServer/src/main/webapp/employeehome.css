@@ -93,4 +93,26 @@ div.details{
     height: 250px;
     width: 500px;
     visibility: hidden;
+    padding: 55px;
+    padding-top: 19px;
+    padding-left: 26px;
+}
+div.rdetail *{
+    color: darkturquoise;
+}
+button#cancel_btn{
+    visibility: hidden;
+    position: relative;
+}
+div.rdetail{
+    display: inline-block;
+    position: relative;
+    padding-right: 20px;
+    border-width: 1px;
+    border-top-style: dotted;
+    border-color: darkcyan;
+}
+div.rinfo{
+    display: inline-block;
+    position: relative;
 }
