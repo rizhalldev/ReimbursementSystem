@@ -1,0 +1,55 @@
+@font-face{
+    font-family: finalFantasy;
+    src: url(Reactor7.woff);
+}
+@font-face{
+    font-family: finalfantasylogo;
+    src: url(finalf.woff);
+}
+*{
+    font-family: finalfantasy;
+    font-size: xx-large;
+    text-shadow: 2px 1px slategray;
+}
+body{
+    background-color: black;
+}
+div.container{
+    height: 500px;
+    width: 500px;
+    position: relative;
+    border-style: solid;
+    border-color: silver;
+    border-radius: 10px;
+    border-width: 2px;
+    box-shadow:  2px 2px darkgrey, 
+                -2px -2px darkgrey, 
+                 2px -2px darkgrey, 
+                -2px 2px darkgrey, 
+                inset 0px 0px 10px seashell;
+    background-image: url("swordbg.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-left: 250px;
+    margin-top: 50px;
+}
+div.logo{
+    font-family: finalfantasylogo;
+    font-size: 60px;
+    color: whitesmoke;
+    size: large;
+}
+button.button{
+    border-color: transparent;
+    background-color: transparent;
+    color: whitesmoke;
+    position: relative;
+    left: 80px;
+    top: 55px;
+    margin-bottom: 1px;
+}
+button#employee-login-btn {
+    left: 71px;
+}

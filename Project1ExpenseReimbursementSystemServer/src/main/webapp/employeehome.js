@@ -38,6 +38,10 @@ document.getElementById("form_back_btn").addEventListener("click", function(){
 document.getElementById("submit_btn").addEventListener("click", function(){
     submitRequest();
 });
+document.getElementById("exit_btn").addEventListener("click", function(){
+    clearSession();
+    setTimeout(function(){window.open("index.html","_self");},500);
+});
 
 //---------------FUNCTIONS---------------//
 async function getLoggedEmployee() {
@@ -56,7 +60,7 @@ async function getLoggedEmployee() {
         let manager = await httpResponse3.json();
         employee.division = manager.division;
         document.getElementById("username").innerHTML = document.getElementById("username").innerHTML + `${employee.userName}`;
-        document.getElementById("id").innerHTML = document.getElementById("id").innerHTML + `${employee.employeeId}`;
+        // document.getElementById("id").innerHTML = document.getElementById("id").innerHTML + `${employee.employeeId}`;
         document.getElementById("full_name").innerHTML = document.getElementById("full_name").innerHTML + `${employee.firstName} ${employee.lastName}`;
         document.getElementById("division").innerHTML = document.getElementById("division").innerHTML + `${employee.division}`;
         document.getElementById("balance").innerHTML = document.getElementById("balance").innerHTML + `${employee.balance} Gil`;
@@ -134,6 +138,12 @@ async function submitRequest(){
     window.open("employeehome.html","_self");
 }
 
+async function clearSession(){
+    let httpResponse = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/clearsession`);
+    let res = await httpResponse;
+    console.log(res);
+}
+
 //---------OTHER FUNCTIONALITIES----------//
 function setTime(){
     let time = new Date();
@@ -142,6 +152,6 @@ function setTime(){
     let seconds = ("0" + time.getSeconds()).slice(-2);
     let merid  = hours >= 12 ? "PM" : "AM";
     hours = hours % 12 ? hours % 12 : 12;
-    document.getElementById("time").innerHTML = `<br>${hours}:${minutes}:${seconds} ${merid}<br>${time.getMonth()} - ${time.getDay()} - ${time.getFullYear()}`;
+    document.getElementById("time").innerHTML = `<br>${hours}:${minutes}:${seconds} ${merid}<br>${time.getMonth()+1} - ${time.getDate()} - ${time.getFullYear()}`;
 }
 setInterval(setTime,1000);

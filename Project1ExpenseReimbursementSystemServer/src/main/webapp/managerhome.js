@@ -25,6 +25,10 @@ document.getElementById("back_btn_2").addEventListener("click", function(){
 document.getElementById("settle_btn").addEventListener("click", function(){
     settleReimbursement();
 });
+document.getElementById("exit_btn").addEventListener("click", function(){
+    clearSession();
+    setTimeout(function(){window.open("index.html","_self");},500);
+});
 
 //----------------FUNCTIONS----------------//
 async function getLoggedManager() {
@@ -42,7 +46,7 @@ async function getLoggedManager() {
         let employees = await httpResponse2.json();
         console.log(employees);
         document.getElementById("username").innerHTML = document.getElementById("username").innerHTML + manager.username;
-        document.getElementById("id").innerHTML = document.getElementById("id").innerHTML + manager.managerId;
+        // document.getElementById("id").innerHTML = document.getElementById("id").innerHTML + manager.managerId;
         document.getElementById("full_name").innerHTML = document.getElementById("full_name").innerHTML + manager.firstName + " " + manager.lastName;
         document.getElementById("division").innerHTML = document.getElementById("division").innerHTML + manager.division;
         document.getElementById("employee_count").innerHTML = document.getElementById("employee_count").innerHTML + employees.length;
@@ -107,6 +111,12 @@ async function settleReimbursement(){
     let httpResponse1 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/settlereimbursement?amount=${amount}&details=${details}`);
     let reimb2 = await httpResponse1.json();
     window.open("managerhome.html","_self");
+}
+
+async function clearSession(){
+    let httpResponse = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/clearsession`);
+    let res = await httpResponse;
+    console.log(res);
 }
 
 //---------OTHER FUNCTIONALITIES----------//
