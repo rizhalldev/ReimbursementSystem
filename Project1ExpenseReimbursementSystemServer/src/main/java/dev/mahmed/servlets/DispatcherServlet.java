@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.mahmed.controllers.EmployeeController;
+import dev.mahmed.controllers.GlobalController;
 import dev.mahmed.controllers.ManagerController;
 
 public class DispatcherServlet extends HttpServlet {
@@ -18,6 +19,7 @@ public class DispatcherServlet extends HttpServlet {
 
 	EmployeeController econtrol = new EmployeeController();
 	ManagerController mcontrol = new ManagerController();
+	GlobalController gcontrol = new GlobalController();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -74,6 +76,11 @@ public class DispatcherServlet extends HttpServlet {
 		case "/Project1ExpenseReimbursementSystemServer/api/submitrequest":
 			econtrol.submitRequest(request, response);
 			break;
+		
+		case "/Project1ExpenseReimbursementSystemServer/api/clearsession":
+			gcontrol.clearSession(request, response);
+			break;
+			
 		default:
 			break;
 		}
