@@ -30,5 +30,15 @@ public class ManagerServicetest {
 		System.out.println(manager);
 		System.out.println(mserv.getManagerEmployees(manager));
 	}
+	
+	@Test
+	public void getManagerReimbursements() {
+		Manager manager = new Manager();
+		manager.setUsername("Gyahaha");
+		manager.setPassword("heyalright");
+		manager = mserv.managerLogin(manager);
+		System.out.println(manager);
+		System.out.println(mserv.getManagerReimbursements(manager));
+	}
 
 }

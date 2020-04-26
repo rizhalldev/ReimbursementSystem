@@ -3,6 +3,28 @@ window.addEventListener("load", function(){
     getLoggedManager();
     setTime();
 });
+document.getElementById("view_pending_btn").addEventListener("click", function(){
+    document.getElementById("options").style.visibility = "hidden";
+    document.getElementById("info").style.visibility = "hidden";
+    document.getElementById("reimbursements").style.visibility = "visible";
+    viewPendingByManager();
+});
+document.getElementById("view_div_btn").addEventListener("click", function(){
+    document.getElementById("options").style.visibility = "hidden";
+    document.getElementById("info").style.visibility = "hidden";
+    document.getElementById("reimbursements").style.visibility = "visible";
+    viewPendingByDivision();
+});
+document.getElementById("back_btn_1").addEventListener("click", function(){
+    window.open("managerhome.html","_self");
+});
+document.getElementById("back_btn_2").addEventListener("click", function(){
+    document.getElementById("reimbursements").style.visibility = "visible";
+    document.getElementById("details").style.visibility = "hidden";
+});
+document.getElementById("settle_btn").addEventListener("click", function(){
+    settleReimbursement();
+});
 
 //----------------FUNCTIONS----------------//
 async function getLoggedManager() {
@@ -25,6 +47,66 @@ async function getLoggedManager() {
         document.getElementById("division").innerHTML = document.getElementById("division").innerHTML + manager.division;
         document.getElementById("employee_count").innerHTML = document.getElementById("employee_count").innerHTML + employees.length;
     }
+}
+
+//---------------Functions----------------//
+
+async function viewPendingByManager(){
+    let httpResponse1 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getmanagerreimbursements`);
+    let reimbursements = await httpResponse1.json();
+    document.getElementById("list").innerHTML = "<thead><th>ID</th><th>Category</th><th>Requested</th><th>Status</th></thead>";
+    for (i = 0; i < reimbursements.length; i++) {
+        if (reimbursements[i].status == "Pending") {
+        document.getElementById("list").innerHTML = document.getElementById("list").innerHTML +
+        `<tr><td><button id="${i}" class="reimbursement" onclick="viewDetailsManager(${i})">${reimbursements[i].reimbursementId}</button></td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
+    }}
+}
+
+async function viewPendingByDivision(){
+    let httpResponse1 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getdivisionreimbursements`);
+    let reimbursements = await httpResponse1.json();
+    document.getElementById("list").innerHTML = "<thead><th>ID</th><th>Category</th><th>Requested</th><th>Status</th></thead>";
+    for (i = 0; i < reimbursements.length; i++) {
+        if (reimbursements[i].status == "Pending") {
+        document.getElementById("list").innerHTML = document.getElementById("list").innerHTML +
+        `<tr><td><button id="${i}" class="reimbursement" onclick="viewDetailsDivision(${i})">${reimbursements[i].reimbursementId}</button></td><td>${reimbursements[i].category}</td><td>${reimbursements[i].amountRequested}</td><td>${reimbursements[i].status}</td></tr>`;
+    }}
+}
+
+async function viewDetailsManager(i){
+    document.getElementById("reimbursements").style.visibility = "hidden";
+    document.getElementById("details").style.visibility = "visible";
+    let httpResponse1 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getreimbursementfrommanager?index=${i}`);
+    let reimbursement = await httpResponse1.json();
+    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getemployee?id=${reimbursement.employeeId}`);
+    let employee = await httpResponse2.json();
+    document.getElementById("emp_name").innerHTML = employee.firstName + " " + employee.lastName;
+    document.getElementById("reimb_date").innerHTML = reimbursement.date;
+    document.getElementById("reimb_category").innerHTML = reimbursement.category;
+    document.getElementById("reimb_requested").innerHTML = reimbursement.amountRequested;
+    document.getElementById("reimb_detail1").innerHTML = reimbursement.details.substring(0,200);
+}
+
+async function viewDetailsDivision(i){
+    document.getElementById("reimbursements").style.visibility = "hidden";
+    document.getElementById("details").style.visibility = "visible";
+    let httpResponse1 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getreimbursementfromdivision?index=${i}`);
+    let reimbursement = await httpResponse1.json();
+    let httpResponse2 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/getemployee?id=${reimbursement.employeeId}`);
+    let employee = await httpResponse2.json();
+    document.getElementById("emp_name").innerHTML = employee.firstName + " " + employee.lastName;
+    document.getElementById("reimb_date").innerHTML = reimbursement.date;
+    document.getElementById("reimb_category").innerHTML = reimbursement.category;
+    document.getElementById("reimb_requested").innerHTML = reimbursement.amountRequested;
+    document.getElementById("reimb_detail1").innerHTML = reimbursement.details.substring(0,200);
+}
+
+async function settleReimbursement(){
+    let amount = document.getElementById("reimb_pay").value;
+    let details = document.getElementById("reimb_detail2").value.replace(/[ .!?]/g,"_");
+    let httpResponse1 = await fetch(`http://${window.location.hostname}:8080/Project1ExpenseReimbursementSystemServer/api/settlereimbursement?amount=${amount}&details=${details}`);
+    let reimb2 = await httpResponse1.json();
+    window.open("managerhome.html","_self");
 }
 
 //---------OTHER FUNCTIONALITIES----------//

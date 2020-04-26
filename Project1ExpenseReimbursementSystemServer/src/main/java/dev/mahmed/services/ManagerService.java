@@ -18,12 +18,16 @@ public interface ManagerService {
 //	List<Reimbursement> viewPendingReimbursements(Reimbursement reimbursement); // Set reimbursement status pending and pass
 //	List<Reimbursement> viewCompletedReimbursements(Reimbursement reimbursement); // Set reimbursement status 
 //	
+	Employee getEmployee(int id);
 //	List<Employee> viewDivisionEmployees(Manager manager); // List employees based on own 
 //	List<Employee> viewMyEmployees(Manager manager); // List employees based on own managerId
 //	List<Employee> viewAllEmployees(); // List all employees
 //	
+	List<Reimbursement> getManagerReimbursements(Manager manager);
+	List<Reimbursement> getDivisionReimbursements(Manager manager);
 //	List<Reimbursement> viewEmployeeReimbursements(Employee employee); // Select employee from any above list<e> and show their reimbursements
-//	
+
+	Reimbursement settleReimbursement(Reimbursement reimbursement, Employee employee, String details);
 //	// From any above list<r> view, "select" a reimbursement to view, this view gives update options
 //	Reimbursement viewReimbursement(Reimbursement reimbursemest);
 //	

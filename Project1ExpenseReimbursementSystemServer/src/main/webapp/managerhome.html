@@ -20,11 +20,12 @@
                 <br><br><br><br><br>
                 <table id="list">
                 </table>
+                <button id="back_btn_1">Back</button>
             </div>
 
             <div class="menu options" id="options">
                 <p>Reimbursements:</p>
-                <button id="view_own_btn">Your Pending</button>
+                <button id="view_pending_btn">Your Pending</button>
                 <button id="view_div_btn">Division</button>
                 <button id="view_employee_btn">Employees</button></p>
                 <br>
@@ -33,6 +34,18 @@
                 <br>
                 <br>
                 <button>Exit</button>
+            </div>
+
+            <div class="menu details" id="details">
+                <div class="rdetail">Name: <div id="emp_name" class="rinfo"></div></div>
+                <div class="rdetail">Date submitted: <div id="reimb_date" class="rinfo"></div></div>
+                <div class="rdetail">Category: <div id="reimb_category" class="rinfo"></div></div>
+                <div class="rdetail">Amount Requested: <div id="reimb_requested" class="rinfo"></div></div>
+                <div class="rdetail">Employee comment:<br><textarea id="reimb_detail1" class="reimb_detail" readonly></textarea></div>
+                <div class="rdetail">Amount to pay: <input type="number" id="reimb_pay" class="rinfo" placeholder="Enter amount">0</div>
+                <div class="rdetail">Manager comment:<br></Manager><textarea id="reimb_detail2" class="reimb_detail" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9 .!?]/g, '')"></textarea></div>
+                <button id="settle_btn">Settle Reimbursement</button>
+                <button id="back_btn_2">Back</button>
             </div>
 
             <div class="menu time">
