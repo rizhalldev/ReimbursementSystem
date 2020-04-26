@@ -23,9 +23,9 @@ ReimbursementDAO rdao = new ReimbursementDAOmaria();
 ManagerDAO mdao = new ManagerDAOmaria();
 
 	@Override
-	public Employee employeeLogin(Employee employee) {
+	public Employee employeeLogin(Employee employee){
 		Employee check = edao.getEmployeeByUsername(employee.getUserName());
-		if (check.getUserName().equals(employee.getUserName()) && check.getPassword().equals(employee.getPassword()))
+		if (check.getUserName().equalsIgnoreCase(employee.getUserName()) && check.getPassword().equals(employee.getPassword()))
 			return check;
 		else
 		{
