@@ -59,3 +59,7 @@ button{
     color: white;
     border-color: blanchedalmond;
 }
+*::selection{
+    background-color: transparent;
+    color: crimson;
+}
