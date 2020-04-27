@@ -1,3 +1,21 @@
 div.details{
     visibility: hidden;
+    width: min-content;
+}
+textarea.reimb_detail{
+    width: 565px;
+    height: 145px;
+    color: darkturquoise;
+}
+div.rinfo{
+    color: darkturquoise;
+}
+div#details * {
+    display: inline-block;
+}
+img#avatar {
+    border-style: groove;
+    height: 150px;
+    width: 150px;
+    margin-left: 10px;
 }

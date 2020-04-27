@@ -53,3 +53,7 @@ button.button{
 button#employee-login-btn {
     left: 71px;
 }
+*::selection{
+    background-color: transparent;
+    color: crimson;
+}

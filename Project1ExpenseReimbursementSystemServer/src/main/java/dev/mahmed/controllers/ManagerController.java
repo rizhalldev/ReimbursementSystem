@@ -32,6 +32,7 @@ public void managerLogin(HttpServletRequest request, HttpServletResponse respons
 		
 		Manager manager = gson.fromJson(body, Manager.class);
 		manager = mserv.managerLogin(manager);
+		manager.setPassword("");
 		String managerJson = gson.toJson(manager);
 		session.setAttribute("manager", managerJson);
 	}

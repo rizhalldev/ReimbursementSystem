@@ -1,16 +1,24 @@
 
 div.sort_options{
     width: 680px;
-    height: 40px;
+    height: 0px;
     position: absolute;
     left: 4px;
-    top: 34px;
+    top: 10px;
+    padding: 20px;
     visibility: hidden;
+}
+div.sort_options * {
+    position: relative;
+    display: inline-block;
+    bottom: 12px;
+    margin-top: 0px;
+    margin-right: 23px;
 }
 div.details{
     position: absolute;
-    height: 250px;
-    width: 500px;
+    height: min-content;
+    width: min-content;
     visibility: hidden;
     padding: 55px;
     padding-top: 19px;
@@ -43,7 +51,8 @@ div.creator{
     padding: 55px;
     padding-top: 19px;
     padding-left: 17px;
-    left: 213px;
+    left: 68px;
+    bottom: 134px;
 }
 .form{
     background-color: dodgerblue;
@@ -54,4 +63,17 @@ input#amount_input {
 textarea#comment_input {
     width: 565px;
     height: 145px;
+}
+div#reimb_id {
+    visibility: hidden;
+}
+textarea.reimb_detail {
+    width: 565px;
+    height: 145px;
+}
+img#avatar {
+    border-style: groove;
+    height: 150px;
+    width: 150px;
+    margin-left: 10px;
 }

@@ -31,6 +31,7 @@ public class EmployeeController {
 		
 		Employee employee = gson.fromJson(body, Employee.class);
 		employee = eserv.employeeLogin(employee);
+		employee.setPassword("");
 		String employeeJson = gson.toJson(employee);
 		session.setAttribute("employee", employeeJson);
 	}
