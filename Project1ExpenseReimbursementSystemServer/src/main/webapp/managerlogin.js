@@ -1,8 +1,7 @@
 document.getElementById("manager-login-btn").addEventListener("click", managerLogin);
-window.addEventListener("keyup", function(){cursorSound.play()});
 
 async function managerLogin(){
-    loginSound.play();
+    successSound.play();
     let manager = {
         username:"",
         password:""
@@ -20,5 +19,10 @@ async function managerLogin(){
     setTimeout(function(){window.open("managerhome.html","_self");},500);
 }
 
+let backSound = new Audio("back.mp3");
+let buttonSound = new Audio("button.mp3");
 let cursorSound = new Audio("cursor.mp3");
-let loginSound = new Audio("login.mp3");
+let errorSound = new Audio("error.mp3");
+let successSound = new Audio("login.mp3");
+
+window.addEventListener("keydown", function(){cursorSound.play();});

@@ -5,5 +5,4 @@ let errorSound = new Audio("error.mp3");
 let successSound = new Audio("login.mp3");
 
 window.addEventListener("keydown", function(){cursorSound.play();});
-window.addEventListener("load", function(){backSound.play();});
 document.getElementById("detail_back_btn").addEventListener("click", function(){backSound.play();})
