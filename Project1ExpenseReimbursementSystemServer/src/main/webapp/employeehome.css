@@ -1,0 +1,79 @@
+
+div.sort_options{
+    width: 680px;
+    height: 0px;
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    padding: 20px;
+    visibility: hidden;
+}
+div.sort_options * {
+    position: relative;
+    display: inline-block;
+    bottom: 12px;
+    margin-top: 0px;
+    margin-right: 23px;
+}
+div.details{
+    position: absolute;
+    height: min-content;
+    width: min-content;
+    visibility: hidden;
+    padding: 55px;
+    padding-top: 19px;
+    padding-left: 26px;
+}
+div.rdetail *{
+    color: darkturquoise;
+}
+button#cancel_btn{
+    visibility: hidden;
+    position: relative;
+}
+div.rdetail{
+    display: inline-block;
+    position: relative;
+    padding-right: 20px;
+    border-width: 1px;
+    border-top-style: dotted;
+    border-color: darkcyan;
+}
+div.rinfo{
+    display: inline-block;
+    position: relative;
+}
+div.creator{
+    position: absolute;
+    height: 250px;
+    width: 532px;
+    visibility: hidden;
+    padding: 55px;
+    padding-top: 19px;
+    padding-left: 17px;
+    left: 68px;
+    bottom: 134px;
+}
+.form{
+    background-color: dodgerblue;
+}
+input#amount_input {
+    width: 184px;
+}
+textarea#comment_input {
+    width: 565px;
+    height: 145px;
+}
+div#reimb_id {
+    visibility: hidden;
+}
+textarea.reimb_detail {
+    width: 565px;
+    height: 145px;
+}
+img#avatar {
+    border-style: groove;
+    height: 150px;
+    width: 150px;
+    margin-left: 10px;
+}

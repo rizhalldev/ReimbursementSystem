@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Employee Home Page!</title>
+        <link rel="stylesheet" href="ff7menu.css">
+        <link rel="stylesheet" href="employeehome.css">
+    </head>
+    
+    <body id="employee-home-page">
+        <div class="container">
+            <div class="menu main" id="info">
+                <div id="username">Username: </div>
+                <img id="avatar" src="">
+                <!-- <div id="id">ID Number: </div> -->
+                <div id="full_name">Name: </div>
+                <div id="division">Division: </div>
+                <div id="balance">Balance: </div>
+                <div id="reimburse">Total Reimbursements: </div>
+            </div>
+            <div class="menu main reimbursements" id="reimbursements">
+                <table id="list">
+                </table>
+            </div>
+            <div class="menu options" id="options">
+                <div>Reimbursements:</div>
+                <button id="view_btn">View</button><br>
+                <button id="create_btn">Create</button><br>
+                <button id="exit_btn">Exit</button>
+            </div>
+            <div class="menu sort_options" id="sort_options">
+                <button id="all_btn">All</button>
+                <button id="pending_btn">Pending</button>
+                <button id="granted_btn">Granted</button>
+                <button id="partial_btn">Partial</button>
+                <button id="declined_btn">Declined</button>
+                <button id="back_btn" class="back">Back</button>
+            </div>
+            <div class="menu time">
+                <p id="time" class="time"></p>
+                <p id="date" class="time"></p>
+            </div>
+            <div class="menu location"><p id="location">Employee Homepage</p></div>
+            <div class="menu details" id="details">
+                <div class="rdetail">Category: <div id="reimb_category" class="rinfo"></div></div><br>
+                <div class="rdetail">Date: <div id="reimb_date" class="rinfo"></div></div><br>
+                <div class="rdetail">Status: <div id="reimb_status" class="rinfo"></div></div><br>
+                <div class="rdetail">Requested: <div id="reimb_requested" class="rinfo"></div></div><br>
+                <div class="rdetail">Paid: <div id="reimb_paid" class="rinfo"></div></div><br>
+                <div class="rdetail">Employee comment:<br><textarea id="reimb_detail1" class="reimb_detail" readonly></textarea></div>
+                <div class="rdetail">Manager comment:<br></Manager><textarea id="reimb_detail2" class="reimb_detail" readonly></textarea>
+                <button id="cancel_btn">Cancel Reimbursement</button>
+                <button id="detail_back_btn" class="back">Back</button><div id="reimb_id" class="rinfo"></div>
+            </div>
+
+
+            <div class="menu creator" id="creator">
+                <div id="form_category">Reimbursement category: 
+                    <select id="category_select" class="form">
+                        <option value="Certification">Certification</option>
+                        <option value="Equipment">Equipment</option>
+                        <option value="Food">Food</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Vacation">Vacation</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div id="form_amount">Amount to request: <input type="number" class="form" id="amount_input" placeholder="Input Amount"></div>
+                <div id="form_comment">Comment (Optional):<br><textarea class="form" maxlength="200" id="comment_input" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9 .!?]/g, '')"></textarea></div>
+                <div id="form_date">Date of submission: </div>
+                <button id="submit_btn">Submit Request</button>
+                <button id="form_back_btn" class="back">Back</button>
+            </div>
+
+            
+        </div>
+    </body>
+    
+    <script src="employeehome.js"></script>
+</html>

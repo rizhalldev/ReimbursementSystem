@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Manager HUB</title>
+        <link rel="stylesheet" href="ff7menu.css">
+        <link rel="stylesheet" href="managerhome.css">
+    </head>
+
+    <body id="manager-home-page">
+        <div class="container">
+            <div class="main menu" id="info">
+                <div id="username">Username: </div>
+                <img id="avatar" src="">
+                <!-- <div id="id">ID Number: </div> -->
+                <div id="full_name">Name: </div>
+                <div id="division">Division: </div>
+                <div id="employee_count">Number of employees: </div>
+            </div>
+
+            <div class="menu main reimbursements" id="reimbursements">
+                <table id="list">
+                </table>
+                <button id="back_btn_1">Back</button>
+            </div>
+
+            <div class="menu options" id="options">
+                <div>Reimbursements:</div>
+                <button id="view_pending_btn">Your Pending</button><br>
+                <button id="view_div_btn">Division</button><br>
+                <!-- <button id="view_employee_btn">Employees</button> -->
+                <!-- <br>
+                <br>
+                <br>
+                <br>
+                <br> -->
+                <button id="exit_btn">Exit</button>
+            </div>
+
+            <div class="menu details" id="details">
+                <div class="rdetail">Name: <div id="emp_name" class="rinfo"></div></div><br>
+                <div class="rdetail">Date submitted: <div id="reimb_date" class="rinfo"></div></div><br>
+                <div class="rdetail">Category: <div id="reimb_category" class="rinfo"></div></div><br>
+                <div class="rdetail">Amount Requested: <div id="reimb_requested" class="rinfo"></div></div><br>
+                <div class="rdetail">Employee comment:<br><textarea id="reimb_detail1" class="reimb_detail" readonly></textarea></div>
+                <div class="rdetail">Amount to pay: <input type="number" id="reimb_pay" class="rinfo" placeholder="Enter amount"></div>
+                <div class="rdetail">Manager comment:<br></Manager><textarea id="reimb_detail2" class="reimb_detail" onkeyup="this.value=this.value.replace(/[^a-zA-Z0-9 .!?]/g, '')"></textarea></div><br>
+                <button id="settle_btn">Settle Reimbursement</button>
+                <button id="back_btn_2">Back</button>
+            </div>
+
+            <div class="menu time">
+                <p id="time" class="time"></p>
+                <p id="date" class="time"></p>
+            </div>
+            <div class="menu location"><p id="location">Manager Homepage</p></div>
+
+
+
+        </div>
+    </body>
+    <script src="managerhome.js"></script>
+</html>
